@@ -1,0 +1,309 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: "Inter", sans-serif;
+  color: #f5f5f5;
+  background: #07070a;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+section {
+  scroll-margin-top: 90px;
+  }
+/* body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #07070a;
+} */
+body {
+  margin: 0;
+  min-width: 320px;
+  background: #07070a;
+  color: white;
+  overflow-x: hidden;
+}
+* {
+  box-sizing: border-box;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+::selection {
+  background: rgba(139, 92, 246, 0.35);
+  color: white;
+}
+
+/* Scrollbar */
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #07070a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(139, 92, 246, 0.35);
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+   background: rgba(139, 92, 246, 0.6);
+}
+
+/* Utilities */
+
+@layer utilities {
+  .text-gradient {
+    background: linear-gradient(
+      135deg,
+      #ffffff 0%,
+      #c4b5fd 45%,
+      #22d3ee 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .glass {
+    background: rgba(13, 13, 18, 0.65);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+  }
+
+  .grid-background {
+    background-image:
+      linear-gradient(
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px
+      ),
+      linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.025) 1px,
+        transparent 1px
+      );
+
+    background-size: 50px 50px;
+  }
+
+  .section-container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+
+  .section-padding {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  @media (max-width: 768px) {
+    .section-padding {
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+  }
+
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* ===== Futuristic neon background ===== */
+
+
+/* ===== Holographic prism atmosphere ===== */
+
+.prism-aura {
+  position: absolute;
+  width: 550px;
+  height: 350px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse,
+    rgba(109, 40, 217, 0.13) 0%,
+    rgba(124, 58, 237, 0.055) 40%,
+    transparent 72%
+  );
+  filter: blur(55px);
+  will-change: transform;
+}
+
+.aura-left {
+  top: 5%;
+  left: -20%;
+  animation: aura-float-left 19s ease-in-out infinite alternate;
+}
+
+.aura-right {
+  top: 35%;
+  right: -20%;
+  background: radial-gradient(
+    ellipse,
+    rgba(168, 85, 247, 0.13) 0%,
+    rgba(124, 58, 237, 0.04) 45%,
+    transparent 72%
+  );
+  animation: aura-float-right 23s ease-in-out infinite alternate;
+}
+
+/* A slow, soft scanning beam */
+.prism-scan {
+  position: absolute;
+  top: -30%;
+  left: -45%;
+  width: 28%;
+  height: 160%;
+  transform: rotate(24deg);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(139, 92, 246, 0.025) 30%,
+    rgba(196, 181, 253, 0.09) 50%,
+    rgba(139, 92, 246, 0.025) 70%,
+    transparent
+  );
+  filter: blur(25px);
+  animation: prism-scan-pass 24s ease-in-out infinite;
+}
+
+.prism-glow {
+  animation: prism-glow-breathe 6s ease-in-out infinite;
+}
+
+.prism-current {
+  stroke-dasharray: 28 260;
+  stroke-dashoffset: 0;
+  animation: prism-energy-flow 12s linear infinite;
+}
+
+.prism-points {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: prism-point-pulse 5s ease-in-out infinite;
+}
+
+@keyframes aura-float-left {
+  from {
+    transform: translate3d(0, 0, 0) scale(0.9);
+  }
+  to {
+    transform: translate3d(100px, 80px, 0) scale(1.15);
+  }
+}
+
+@keyframes aura-float-right {
+  from {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  to {
+    transform: translate3d(-100px, -70px, 0) scale(1.2);
+  }
+}
+
+@keyframes prism-scan-pass {
+  0%, 10% {
+    left: -45%;
+    opacity: 0;
+  }
+  25% {
+    opacity: 0.65;
+  }
+  75% {
+    opacity: 0.4;
+  }
+  90%, 100% {
+    left: 120%;
+    opacity: 0;
+  }
+}
+
+@keyframes prism-glow-breathe {
+  0%, 100% {
+    opacity: 0.38;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes prism-energy-flow {
+  from {
+    stroke-dashoffset: 0;
+    opacity: 0.35;
+  }
+  50% {
+    opacity: 0.9;
+  }
+  to {
+    stroke-dashoffset: -1152;
+    opacity: 0.35;
+  }
+}
+
+@keyframes prism-point-pulse {
+  0%, 100% {
+    opacity: 0.7;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .prism-aura,
+  .prism-scan,
+  .prism-glow,
+  .prism-current,
+  .prism-points {
+    animation: none !important;
+  }
+}
+
+
+/* Glass overlay for sections below the hero */
+.glass-section {
+  position: relative;
+  background: rgba(7, 6, 11, 0.28);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255, 255, 255, 0.035);
+}
+
+/* Slightly stronger glass on smaller screens */
+@media (max-width: 768px) {
+  .glass-section {
+    background: rgba(7, 6, 11, 0.38);
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+  }
+}
